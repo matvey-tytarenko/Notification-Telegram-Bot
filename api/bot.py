@@ -29,9 +29,15 @@ def get_episodes():
     return episodes
 
 def handler(request):
-    episodes = get_episodes()
+    try:
+        episodes = get_episodes()
     
-    for e in episodes:
-        msg = f"Новая серия **Dan Da Dan** вышла в твоей любимой озвучке **[DreamCast]({URL})**"
-        bot.send_message(CHAT_ID, msg)
-    return {"Status": "ok", "sent": len(episodes)}
+        for e in episodes:
+            msg = f"Новая серия **Dan Da Dan** вышла в твоей любимой озвучке **[DreamCast]({URL})**"
+            bot.send_message(CHAT_ID, msg)
+        return {"Status": "ok", "sent": len(episodes)}
+    except Exception as e:
+        return {
+            "status": False,
+            "Error Message": str(e)
+        }
