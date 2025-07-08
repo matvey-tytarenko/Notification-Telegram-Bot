@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "builds": [{ "src": "api/start.py", "use": "@vercel/python" }],
+  "builds": [{ "src": "api/bot.py", "use": "@vercel/python" }],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/start.py"
+      "dest": "/api/bot.py"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/start.py"
+      "dest": "/api/bot.py"
     }
   ]
 }
